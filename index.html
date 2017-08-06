@@ -70,7 +70,13 @@ document.onkeypress = function(event) {
     if(guesses === 0){
         losses++
     }
-  
+
+    if(guesses < 0) {
+      guesses=0;
+    }  
+
+    // Psuedo - code -- I know that I need to have the guesses be recorded in the page, but I have tried many variations of append, appendchild, .textContent, etc and could not get it to work.
+
     document.getElementById("wins").innerHTML = "Wins: " + wins;
     document.getElementById("losses").innerHTML = "Losses: " + losses;
     document.getElementById("guesses").innerHTML = "Guesses Left: " + guesses;
@@ -78,18 +84,16 @@ document.onkeypress = function(event) {
 
     } 
 
-    
-    function clearFields() {
+    if(guesses === 0) {
+      var wins = 0;
+      var losses = 0;
+      var guesses = 10;
 
-      wins = 0;
-      losses = 0;
-      guesses = 10;
-
-      computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
-
-      return false;
+    var computerChoice = alphabet[Math.floor(Math.random() * alphabet.length)];
 
     }
+
+    
 
 </script>
 
